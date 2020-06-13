@@ -1,0 +1,12 @@
+#sign_in_box {
+  left: 50%;
+  top: 50%; }
+  #sign_in_box #box {
+    height: 50%;
+    text-align: center; }
+    #sign_in_box #box input {
+      width: 30%;
+      padding: 5px;
+      font-size: large; }
+    #sign_in_box #box .submit {
+      background-color: #1598f0; }

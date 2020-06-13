@@ -1,0 +1,9 @@
+#layout-footer {
+  background-color: white;
+  padding: 8px;
+  font-size: larger;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+  #layout-footer p {
+    color: #746f6f; }
