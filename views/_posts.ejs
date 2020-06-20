@@ -1,32 +1,32 @@
-<li>
-    <p>
-            <%if(locals.user && locals.user.id==post.user.id){%>
-            <small>
-                    <a href="/posts/destroy/<%=post.id%>">X</a>
-            </small>
-            <%}%>
-            <%=post.content%>
-            <br>
-            <small><%=post.user.name%></small>
-            <small><%=post.user.createdAt.toString().substring(0,16)%></small>
-
-    </p>
-    <div class="post-comments">
-            <%if(locals.user){%>
-                    <form action="/comments/create" method="POST">
-                            <input type="text" name="content" placeholder="type here..." required>
-                            <input type="hidden" name="post" value="<%=post._id%>">
-                            <input type="submit" value="Add comment">
-                    </form>
-            <%}%>
-            <div class="posts-comments-list">
-                    <ul id="posts-comments-<%=posts._id%>">
-                            <% for(comment of post.comments){%>
-
-                                <%-include('_comments')-%>
-                                   
-                            <%}%>
-                    </ul>
-            </div>
-    </div>
+<li id="post-<%=post._id%>">
+        <p>
+                <%if(locals.user && locals.user.id==post.user.id){%>
+                        <small>
+                                <a class="post--delete-btn" href="/posts/destroy/<%=post.id%>">X</a>
+                        </small>
+                <%}%>
+                        <%=post.content%>
+                        <br>
+                        <small><%=post.user.name%></small>
+                        <small><%=post.user.createdAt.toString().substring(0,16)%></small>
+                        
+        </p>
+        <div class="post-comments">
+                        <%if(locals.user){%>
+                                <form action="/comments/create" method="POST">
+                                        <input type="text" name="content" placeholder="type here..." required>
+                                        <input type="hidden" name="post" value="<%=post._id%>">
+                                        <input type="submit" value="Add comment">
+                                </form>
+                        <%}%>
+                                <div class="posts-comments-list">
+                                        <ul id="posts-comments-<%=posts._id%>">
+                                                <% for(comment of post.comments){%>
+                                                        
+                                                        <%-include('_comments')-%>
+                                                        
+                                                <%}%>
+                                        </ul>
+                                </div>
+        </div>
 </li>
