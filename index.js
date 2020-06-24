@@ -8,6 +8,8 @@ const passportLocal=require('./config/passport-local-strategy')
 const app=express();
 const port=8000;
 app.use(express.static('./assets'));
+//make upload path available
+app.use('/uploads',express.static(__dirname+'/uploads'));
 const mongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');
