@@ -4,6 +4,7 @@ const Comment=require('../models/comment');
 
 module.exports.create=async function(req,res)
 {
+    console.log(req.body);
     try{
         let post=await Post.create({
             content:req.body.content,
@@ -40,6 +41,18 @@ module.exports.destroy=async function(req,res){
             {
                 post.remove();
                 await Comment.deleteMany({post:req.params.id});
+
+                if(req.xhr)
+                {
+                    req.flash('success','Post and related comments deleted!')
+                    return res.status(200).json({
+                        data:{
+                            post_id:req.params.id
+                        },
+                        message:"Post deleted!"
+                    })
+                }
+
                 req.flash('success','Post and related comments deleted!')
                     return res.redirect('back');
             }
