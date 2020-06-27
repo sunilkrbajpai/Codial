@@ -6,7 +6,7 @@ const passport=require('passport')
 const session=require('express-session')
 const passportLocal=require('./config/passport-local-strategy')
 const passportJwt=require('./config/passport-jwt-strategy')
-
+const googlePAssport=require('./config/passport-google-oauth2-strategy');
 const app=express();
 const port=8000;
 app.use(express.static('./assets'));

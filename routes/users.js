@@ -14,8 +14,8 @@ router.post('/create',usersController.create);
 router.post('/login',passport.authenticate(
     'local',
     {failureRedirect:'/users/sign-in'},
-    
 ),
 usersController.login);
-
+router.get('/auth/google',passport.authenticate('google',{scope:['profile','email']}));
+router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/users/sign-in'}),usersController.login);
 module.exports=router;
